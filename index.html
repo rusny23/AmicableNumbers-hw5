@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Amicable Numbers</title>
+    <style type="text/css"> 
+           
+        body{
+            font-size: 12pt;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+    </style>
+
+<script language="javascript">
+	
+	function myFunction()
+	{
+		var n1 = document.getElementById("num1").value;
+		var n2 = document.getElementById("num2").value;
+        n1 = parseInt(n1);
+        n2 = parseInt(n2);
+        var n1fac = [];
+        var n2fac = [];
+        var sum1 = 0;
+        var sum2 = 0;
+
+        for(var i = 1; i < n1; i++)
+        {
+            if(isAFactor(n1, i))
+            {
+                n1fac.push(i);
+                sum1 += i;
+            }
+        }
+
+        for(var i = 1; i < n2; i++)
+        {
+            if(isAFactor(n2, i))
+            {
+                n2fac.push(i);
+                sum2 += i;
+            }      
+        }
+
+        alert("Factors of " + n1 +": " + n1fac);
+        alert("Factors of " + n2 +": " + n2fac);
+
+
+        if((sum1 == n2) && (sum2 == n1))
+        {
+             document.getElementById("factor").innerHTML = "The numbers: " + n1 + " and " + n2 + " are amicable";
+        }
+        else
+        {
+            document.getElementById("factor").innerHTML = "The numbers: " + n1 + " and " + n2 + " are not amicable";
+        }
+	}
+
+    function isAFactor(x, y)
+    {
+        if((x % y) == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+	
+</script>
+</head>
+
+<body>
+	<form>
+	Please input two numbers!<br><br>
+	Number One: <input type="text" name="num1" id="num1"><br><br>
+	Number Two  <input type="text" name="num2" id="num2"><br><br>
+	<input type="button" value="Calculate"
+		   id="btn1" onclick = "myFunction()">
+	</form>
+    <div id ='factor'> </div>
+</body>
+</html>
